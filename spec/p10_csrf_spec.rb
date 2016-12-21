@@ -90,3 +90,6 @@ describe ControllerBase do
     end
   end
 end
+# <!-- <label>Form Authenticity Token
+#   <input type="text" name="authenticity_token" value="<%#= form_authenticity_token %>">
+# </label> -->
