@@ -26,7 +26,12 @@ describe "the symphony of things" do
 
   describe "routes and params" do
     it "route instantiates controller and calls invoke action" do
-      route = Route.new(Regexp.new("^/statuses/(?<id>\\d+)$"), :get, Ctrlr, :route_render)
+      route_info = {
+        pattern: Regexp.new("^/statuses/(?<id>\\d+)$"),
+        method: :get,
+        controller_class: Ctrlr,
+        action_name: :route_render}
+      route = Route.new(route_info)
       allow(req).to receive(:path) { "/statuses/1" }
       allow(req).to receive(:request_method) { 'GET' }
       route.run(req, res)
@@ -34,7 +39,12 @@ describe "the symphony of things" do
     end
 
     it "route adds to params" do
-      route = Route.new(Regexp.new("^/statuses/(?<id>\\d+)$"), :get, Ctrlr, :route_does_params)
+      route_info = {
+        pattern: Regexp.new("^/statuses/(?<id>\\d+)$"),
+        method: :get,
+        controller_class: Ctrlr,
+        action_name: :route_does_params}
+      route = Route.new(route_info)
       allow(req).to receive(:path) { "/statuses/1" }
       allow(req).to receive(:request_method) { 'GET' }
       route.run(req, res)
@@ -56,7 +66,7 @@ describe "the symphony of things" do
       expect(res.headers['Set-Cookie']).to_not be_empty
       cookie_str = res.headers['Set-Cookie']
       cookie_val = Rack::Utils.parse_query(cookie_str)
-      cookie_str = cookie_val['_rails_lite_app']
+      cookie_str = cookie_val['_maglev']
       cookie_hash = JSON.parse(cookie_str)
       expect(cookie_hash["token"]).to eq("testing")
     end

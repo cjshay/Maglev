@@ -2,8 +2,10 @@ require 'json'
 
 class Flash
   attr_reader :now
+
   def initialize(req)
-    cookie = req.cookies['maglev_flash']
+    cookie = req.cookies['_maglev_flash']
+
     if cookie
       @now = JSON.parse(cookie)
     else
@@ -14,14 +16,14 @@ class Flash
   end
 
   def [](key)
-    @now[key] || @flash[key]
+    @now[key.to_s] || @flash[key.to_s]
   end
 
-  def []=(key, val)
-    @flash[key.to_s] = val
+  def []=(key, value)
+    @flash[key.to_s] = value
   end
 
   def store_flash(res)
-    res.set_cookie('maglev_flash', value: @flash.to_json, path: '/')
+    res.set_cookie('_maglev_flash', value: @flash.to_json, path: '/')
   end
 end

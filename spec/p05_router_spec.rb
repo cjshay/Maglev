@@ -12,21 +12,36 @@ describe Route do
 
   describe "#matches?" do
     it "matches simple regular expression" do
-      index_route = Route.new(Regexp.new("^/users$"), :get, "x", :x)
+      route_info = {
+        pattern: Regexp.new("^/users$"),
+        method: :get,
+        controller_class: "x",
+        action_name: :x}
+      index_route = Route.new(route_info)
       allow(req).to receive(:path) { "/users" }
       allow(req).to receive(:request_method) { 'GET' }
       expect(index_route.matches?(req)).to be_truthy
     end
 
     it "matches regular expression with capture" do
-      index_route = Route.new(Regexp.new("^/users/(?<id>\\d+)$"), :get, "x", :x)
+      route_info = {
+        pattern: Regexp.new("^/users/(?<id>\\d+)$"),
+        method: :get,
+        controller_class: "x",
+        action_name: :x}
+      index_route = Route.new(route_info)
       allow(req).to receive(:path) { "/users/1" }
       allow(req).to receive(:request_method) { 'GET' }
       expect(index_route.matches?(req)).to be_truthy
     end
 
     it "correctly doesn't match regular expression with capture" do
-      index_route = Route.new(Regexp.new("^/users/(?<id>\\d+)$"), :get, "UsersController", :index)
+      route_info = {
+        pattern: Regexp.new("^/users/(?<id>\\d+)$"),
+        method: :get,
+        controller_class: "UsersController",
+        action_name: :index}
+      index_route = Route.new(route_info)
       allow(req).to receive(:path) { "/statuses/1" }
       allow(req).to receive(:request_method) { 'GET' }
       expect(index_route.matches?(req)).to be_falsey
@@ -50,7 +65,12 @@ describe Route do
         dummy_controller_instance
       end
       expect(dummy_controller_instance).to receive(:invoke_action)
-      index_route = Route.new(Regexp.new("^/users$"), :get, dummy_controller_class, :index)
+      route_info = {
+        pattern: Regexp.new("^/users$"),
+        method: :get,
+        controller_class: dummy_controller_class,
+        action_name: :index}
+      index_route = Route.new(route_info)
       index_route.run(req, res)
     end
   end

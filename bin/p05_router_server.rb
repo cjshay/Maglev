@@ -28,6 +28,7 @@ class Cats2Controller < ControllerBase
   def index
     render_content($cats.to_json, "application/json")
   end
+
 end
 
 router = Router.new
