@@ -1,0 +1,8 @@
+<h1>Bands</h1>
+
+<% if flash[:notice] %>
+  Notice: <%= flash[:notice] %>
+<% end %>
+
+<pre>Band Data: <%= @bands.to_s %></pre>
+<a href="/bands/new">Create New Band</a>
