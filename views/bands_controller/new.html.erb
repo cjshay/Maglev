@@ -1,3 +1,8 @@
+<% if flash.now[:errors] %>
+  <% flash.now[:errors].each do |error| %>
+    <%= error %>
+  <% end %>
+<% end %>
 <% if flash[:errors] %>
   <% flash[:errors].each do |error| %>
     <%= error %>
@@ -9,9 +14,9 @@
     <input type="text" name="band[name]" value="<%= @band.name %>">
   </label>
 
-  <label>Form Authenticity Token
+  <!-- <label>Form Authenticity Token
     <input type="text" name="authenticity_token" value="<%= form_authenticity_token %>">
-  </label>
+  </label> -->
 
   <label>Frontman
     <input type="text" name="band[frontman]" value="<%= @band.frontman %>">

@@ -1,6 +1,7 @@
 require 'rack'
 require_relative '../lib/controller_base.rb'
 require_relative '../lib/router'
+require 'byebug'
 
 class Band
   attr_reader :name, :frontman
@@ -48,7 +49,7 @@ class BandsController < ControllerBase
     @band = Band.new(params["band"])
     if @band.save
       flash[:notice] = "Saved band successfully"
-      redirect_to "/band"
+      redirect_to "/bands"
     else
       flash.now[:errors] = @band.errors
       render :new
