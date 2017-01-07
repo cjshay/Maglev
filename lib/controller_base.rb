@@ -3,7 +3,6 @@ require 'active_support/core_ext'
 require 'erb'
 require_relative './session'
 require_relative './flash'
-require 'byebug'
 require 'active_support/inflector'
 
 
