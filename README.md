@@ -2,18 +2,15 @@
 
 ####Introduction
 
-Maglev is a light-weight MVC framework that lets applications to communicate
-with a client browser using the HTTP request-response cycle.
+Maglev is a light-weight framework that gives applications the ability to
+communicate with a client browser using the HTTP request-response cycle.
 
 ####Technologies
 
 - Ruby- Maglev is written using Ruby
-- Rack- Serves as the server for Maglev
+- Rack- Serves as the server interface for Maglev
 
 ####Future Direction
-
-Rails is a very complex framework and fun to interact with, so I plan to keep working
-on this project.
 
 - Merge with an ORM lite project.
 If I make a lite version of ActiveRecord, the data that is used in the applications

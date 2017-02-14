@@ -68,6 +68,7 @@ end
 
 router = Router.new
 router.draw do
+  get Regexp.new("^/$"), BandsController, :index
   get Regexp.new("^/bands$"), BandsController, :index
   get Regexp.new("^/bands/new$"), BandsController, :new
   get Regexp.new("^/bands/(?<id>\\d+)$"), BandsController, :show
