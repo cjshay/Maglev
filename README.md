@@ -45,7 +45,7 @@ logic.
 
 - Create View folders that match the names of your controllers (from camel case
   to snake case):
- 
+
   BandsController => /bands_controller
 
   The views should handle your presentation logic in HTML and use erb to
