@@ -1,6 +1,6 @@
-##Maglev
+## Maglev
 
-####Introduction
+#### Introduction
 
 Maglev is a basic framework that allows users to construct an RESTful
 web application. Rack allows Maglev to manipulate the response and requests
@@ -9,7 +9,7 @@ Maglev allows users to create classes for application logic, controllers for
 routing logic, and views for presentation structure. This is not connected
 to an ORM, and so data will not persist between sessions.
 
-####Demo
+#### Demo
 In order to run the demo:
 
 - Download/Clone this repository
@@ -17,7 +17,7 @@ In order to run the demo:
 - Run the demo file using the command 'ruby demo/maglev_demo.rb'
 - Navigate to http://localhost:3000/ and create bands!
 
-####Use for your own application
+#### Use for your own application
 To use this framework to run an application, follow these simple steps!
 
 - Download/clone this repository.
@@ -91,7 +91,7 @@ logic.
   ```
 
 
-####Future Direction
+#### Future Direction
 I really enjoyed creating a framework in order to understand the HTTP request/
 response cycle more fully. I plan to continue to work on this project and build it out.
 
